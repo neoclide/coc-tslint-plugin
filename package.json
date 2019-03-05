@@ -1,0 +1,110 @@
+{
+  "name": "coc-tslint-plugin",
+  "version": "1.0.0",
+  "description": "TSLint extension for coc.nvim as tsserver plugin",
+  "main": "lib/index.js",
+  "publisher": "chemzqm",
+  "keywords": [
+    "coc.nvim",
+    "tslint",
+    "tsserver"
+  ],
+  "engines": {
+    "coc": "^0.0.57"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "tsc -p tsconfig.json",
+    "prepare": "yarn clean && yarn build"
+  },
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "contributes": {
+    "jsonValidation": [
+      {
+        "fileMatch": "tslint.json",
+        "url": "http://json.schemastore.org/tslint"
+      },
+      {
+        "fileMatch": "jsconfig*.json",
+        "url": "./schemas/tsconfig.schema.json"
+      },
+      {
+        "fileMatch": "tsconfig*.json",
+        "url": "./schemas/tsconfig.schema.json"
+      }
+    ],
+    "typescriptServerPlugins": [
+      {
+        "name": "typescript-tslint-plugin",
+        "enableForWorkspaceTypeScriptVersions": true
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "TSLint",
+      "properties": {
+        "tslint.jsEnable": {
+          "type": "boolean",
+          "description": "Control whether tslint is enabled for JavaScript files or not."
+        },
+        "tslint.autoFixOnSave": {
+          "type": "boolean",
+          "description": "Fix autofixable issues on save.",
+          "default": false
+        },
+        "tslint.configFile": {
+          "type": "string",
+          "description": "The path to the rules configuration file"
+        },
+        "tslint.ignoreDefinitionFiles": {
+          "type": "boolean",
+          "description": "Control if TypeScript definition files should be ignored."
+        },
+        "tslint.exclude": {
+          "description": "A glob or an array of globs. Any file matching these globs will not be linted.",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "tslint.alwaysShowRuleFailuresAsWarnings": {
+          "type": "boolean",
+          "description": "Always show rule failures as warnings, independent of the tslint configuration.",
+          "default": true
+        },
+        "tslint.suppressWhileTypeErrorsPresent": {
+          "type": "boolean",
+          "description": "Suppress tslint errors from being reported while other errors are present."
+        }
+      }
+    }
+  },
+  "author": "chemzqm@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@chemzqm/tsconfig": "^0.0.3",
+    "@chemzqm/tslint-config": "^1.0.18",
+    "@types/node": "^11.10.4",
+    "coc.nvim": "^0.0.58",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "typescript-tslint-plugin": "0.3.1",
+    "vscode-languageserver-protocol": "^3.15.0-next.1",
+    "vscode-uri": "^1.0.6"
+  }
+}
