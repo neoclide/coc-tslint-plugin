@@ -40,7 +40,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       let diagnostics = diagnosticManager.getDiagnostics(document.uri)
       if (!diagnostics || diagnostics.length == 0) return
       let action = await getTsLintFixAllCodeAction(document, diagnostics)
-      await workspace.applyEdit(action.edit)
+      if (action && action.edit) await workspace.applyEdit(action.edit)
     }
     ev.waitUntil(thenable())
   }, null, 'tslint')
