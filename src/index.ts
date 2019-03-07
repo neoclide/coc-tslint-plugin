@@ -1,5 +1,6 @@
-import { ExtensionContext, extensions, diagnosticManager, workspace, WorkspaceConfiguration } from 'coc.nvim'
+import { diagnosticManager, ExtensionContext, extensions, workspace, WorkspaceConfiguration } from 'coc.nvim'
 import { getTsLintFixAllCodeAction } from './fixAll'
+import { isEnabled } from './utils'
 
 const typeScriptExtensionId = 'coc-tsserver'
 const pluginId = 'typescript-tslint-plugin'
@@ -37,6 +38,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
     if (!autoFixOnSave) return
     let thenable = async () => {
       let { document } = ev
+      if (!isEnabled(document)) return false
       let diagnostics = diagnosticManager.getDiagnostics(document.uri)
       if (!diagnostics || diagnostics.length == 0) return
       let action = await getTsLintFixAllCodeAction(document, diagnostics)
