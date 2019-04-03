@@ -96,11 +96,11 @@
   "devDependencies": {
     "@chemzqm/tsconfig": "^0.0.3",
     "@chemzqm/tslint-config": "^1.0.18",
-    "@types/node": "^11.10.4",
-    "coc.nvim": "^0.0.58",
+    "@types/node": "^11.13.0",
+    "coc.nvim": "^0.0.62",
     "rimraf": "^2.6.3",
-    "tslint": "^5.13.1",
-    "typescript": "^3.3.3333"
+    "tslint": "^5.15.0",
+    "typescript": "^3.4.1"
   },
   "dependencies": {
     "typescript-tslint-plugin": "0.3.1",
