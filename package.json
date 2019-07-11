@@ -1,6 +1,6 @@
 {
   "name": "coc-tslint-plugin",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "TSLint extension for coc.nvim as tsserver plugin",
   "main": "lib/index.js",
   "publisher": "chemzqm",
@@ -10,7 +10,7 @@
     "tsserver"
   ],
   "engines": {
-    "coc": "^0.0.57"
+    "coc": "^0.0.64"
   },
   "scripts": {
     "clean": "rimraf lib",
@@ -104,8 +104,9 @@
     "typescript": "^3.4.1",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4",
-    "typescript-tslint-plugin": "0.3.1",
     "vscode-languageserver-protocol": "^3.15.0-next.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "typescript-tslint-plugin": "0.3.1"
+  }
 }
