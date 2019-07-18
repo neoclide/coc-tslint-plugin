@@ -1,6 +1,6 @@
 {
   "name": "coc-tslint-plugin",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "TSLint extension for coc.nvim as tsserver plugin",
   "main": "lib/index.js",
   "publisher": "chemzqm",
@@ -89,10 +89,14 @@
           "description": "Suppress tslint errors from being reported while other errors are present."
         },
         "tslint.packageManager": {
-            "type": "string",
-            "description": "Package manager used, either: npm, yarn, or pnpm. This is currently only used for error message instructions about how to install tslint. Default is npm.",
-            "default": "npm",
-            "enum": ["npm", "yarn", "pnpm"]
+          "type": "string",
+          "description": "Package manager used, either: npm, yarn, or pnpm. This is currently only used for error message instructions about how to install tslint. Default is npm.",
+          "default": "npm",
+          "enum": [
+            "npm",
+            "yarn",
+            "pnpm"
+          ]
         }
       }
     }
