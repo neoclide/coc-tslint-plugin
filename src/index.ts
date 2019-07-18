@@ -13,6 +13,7 @@ interface SynchronizedConfiguration {
   suppressWhileTypeErrorsPresent?: boolean
   jsEnable?: boolean
   exclude?: string | string[]
+  packageManager?: 'npm' | 'yarn' | 'pnpm'
 }
 
 export async function activate(context: ExtensionContext): Promise<void> {
@@ -69,6 +70,7 @@ function getConfiguration(): SynchronizedConfiguration {
   withConfigValue(config, outConfig, 'jsEnable')
   withConfigValue(config, outConfig, 'configFile')
   withConfigValue(config, outConfig, 'exclude')
+  withConfigValue(config, outConfig, 'packageManager')
   return outConfig
 }
 
