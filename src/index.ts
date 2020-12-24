@@ -35,7 +35,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
     }
   }, null, subscriptions)
 
-  let disposable = workspace.onWillSaveUntil(async ev => {
+  let disposable = workspace.onWillSaveTextDocument(async ev => {
     if (!autoFixOnSave) return
     let thenable = async () => {
       let { document } = ev
@@ -46,7 +46,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       if (action && action.edit) await workspace.applyEdit(action.edit)
     }
     ev.waitUntil(thenable())
-  }, null, 'tslint')
+  })
   subscriptions.push(disposable)
 }
 
