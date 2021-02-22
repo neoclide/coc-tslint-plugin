@@ -35,11 +35,11 @@ export async function activate(context: ExtensionContext): Promise<void> {
     }
   }, null, subscriptions)
 
-  let disposable = workspace.onWillSaveTextDocument(async ev => {
+  let disposable = workspace.onWillSaveTextDocument(ev => {
     if (!autoFixOnSave) return
+    if (!isEnabled(ev.document)) return
     let thenable = async () => {
       let { document } = ev
-      if (!isEnabled(document)) return false
       let diagnostics = diagnosticManager.getDiagnostics(document.uri)
       if (!diagnostics || diagnostics.length == 0) return
       let action = await getTsLintFixAllCodeAction(document, diagnostics)
