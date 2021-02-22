@@ -1,6 +1,6 @@
 {
   "name": "coc-tslint-plugin",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "TSLint extension for coc.nvim as tsserver plugin",
   "main": "lib/index.js",
   "publisher": "chemzqm",
