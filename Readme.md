@@ -1,5 +1,8 @@
 # coc-tslint-plugin
 
+**WARNING** this extension is deprecated since tslint is deprecated in favor of
+eslint.
+
 Adds [tslint](https://github.com/palantir/tslint) to coc.nvim using the [TypeScript TSLint language service plugin](https://github.com/Microsoft/typescript-tslint-plugin).
 
 This is a fork of [vscode-typescript-tslint-plugin](https://github.com/Microsoft/vscode-typescript-tslint-plugin).
